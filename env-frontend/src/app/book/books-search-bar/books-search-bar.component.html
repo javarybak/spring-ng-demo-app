@@ -1,17 +1,1 @@
 <button class="btn btn-primary" (click)="showAddBookDialog()">Add book</button>
-
-<p-dialog class="ui-dialog" [(visible)]="displayAddBookDialog" modal="modal" width="300"
-          [responsive]="true">
-  <p-header class="ui-hea">
-    Header
-  </p-header>
-
-  <div>
-    Content
-  </div>
-
-  <p-footer>
-    <button type="button" pButton icon="fa-check" (click)="displayAddBookDialog=false" label="Yes"></button>
-    <button type="button" pButton icon="fa-close" (click)="displayAddBookDialog=false" label="No"></button>
-  </p-footer>
-</p-dialog>

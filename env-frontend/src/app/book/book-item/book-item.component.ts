@@ -1,5 +1,8 @@
 import {Component, Input} from '@angular/core';
 import {Book} from '../book.model';
+import {BookService} from "../book.service";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {AddEditBookFormComponent} from "../add-new-book-form/add-new-book-form.component";
 
 @Component({
   selector: 'app-book-item',
@@ -10,6 +13,20 @@ export class BookItemComponent {
   @Input()
   private book: Book;
 
-  constructor() {
+  constructor(private bookService: BookService, private modalService: NgbModal) {
+  }
+
+  showEditBookDialog() {
+    const modalInstance = this.modalService.open(AddEditBookFormComponent);
+    modalInstance.componentInstance.book = Object.assign({}, this.book);
+
+    const bookSaved = (book) => this.bookService.editBook(book)
+      .subscribe(() => modalInstance.close());
+
+    modalInstance.componentInstance.bookSaved.subscribe(bookSaved);
+  }
+
+  deleteBook() {
+    this.bookService.deleteBook(this.book.id);
   }
 }

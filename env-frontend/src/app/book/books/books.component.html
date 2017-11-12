@@ -1,5 +1,11 @@
-<app-books-search-bar></app-books-search-bar>
-<hr>
-<div *ngFor="let book of (books | async)?.content" class="panel panel-default">
-  <app-book-item [book]="book"></app-book-item>
+<div class="row">
+  <div class="col-sm-12">
+    <app-books-search-bar></app-books-search-bar>
+  </div>
+</div>
+
+<div *ngFor="let book of (booksPage | async)?.content " class="row mt-1">
+  <div class="col-sm-12">
+    <app-book-item [book]="book"></app-book-item>
+  </div>
 </div>

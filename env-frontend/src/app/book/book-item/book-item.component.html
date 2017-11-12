@@ -1,3 +1,7 @@
-<div class="panel-body">
-  {{book.name}}
+<div class="card card-default">
+  <div class="card-body">
+    <span>{{book.name}}, {{book.yearPublished}} </span>
+    <button class="btn btn-info" (click)="showEditBookDialog()"><i class="fa fa-pencil-square-o"></i></button>
+    <button class="btn btn-danger" (click)="deleteBook()"><i class="fa fa-trash"></i></button>
+  </div>
 </div>

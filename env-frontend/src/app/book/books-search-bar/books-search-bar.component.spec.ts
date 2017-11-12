@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BooksSearchBarComponent } from './books-search-bar.component';
+import {BooksSearchBarComponent} from './books-search-bar.component';
 
 describe('BooksSearchBarComponent', () => {
   let component: BooksSearchBarComponent;
@@ -19,7 +19,7 @@ describe('BooksSearchBarComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should save', () => {
     expect(component).toBeTruthy();
   });
 });

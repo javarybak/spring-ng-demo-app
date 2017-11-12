@@ -1,24 +1,24 @@
-<nav class="navbar navbar-default" role="navigation">
-  <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" routerLink="/">Book searcher</a>
-  </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Book searcher</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-  <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse navbar-ex1-collapse">
-    <ul class="nav navbar-nav">
-      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/">Books</a></li>
-      <li routerLinkActive="active"><a routerLink="/about">About</a></li>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active" routerLinkActiveOptions="{exact:true}">
+        <a class="nav-link" routerLink="/">Books</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/about">About</a>
+      </li>
     </ul>
-  </div><!-- /.navbar-collapse -->
+  </div>
 </nav>
 
 <div class="container">
-  <router-outlet></router-outlet>
+  <div class="mt-1 ml-1">
+    <router-outlet></router-outlet>
+  </div>
 </div>
