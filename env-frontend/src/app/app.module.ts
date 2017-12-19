@@ -12,7 +12,7 @@ import {BookService} from './book/book.service';
 import {AboutComponent} from './about/about.component';
 import {BookItemComponent} from './book/book-item/book-item.component';
 import {BooksSearchBarComponent} from './book/books-search-bar/books-search-bar.component';
-import {AddEditBookFormComponent} from './book/add-new-book-form/add-new-book-form.component';
+import {AddEditBookFormComponent} from './book/add-edit-book-form/add-new-book-form.component';
 
 const routes: Routes = [
   {path: '', component: BooksComponent},

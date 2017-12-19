@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/api/v1/books")
 public class BookController {
@@ -34,13 +36,13 @@ public class BookController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void addBook(@RequestBody Book book) {
+    public void addBook(@RequestBody @Valid  Book book) {
         bookService.addBook(book);
     }
 
     @PutMapping("/{bookId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void editBook(@PathVariable long bookId, @RequestBody Book book) {
+    public void editBook(@PathVariable long bookId, @RequestBody @Valid  Book book) {
         book.setId(bookId);
         bookService.editBook(book);
     }

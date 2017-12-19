@@ -1,14 +1,13 @@
-import {Injectable} from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {Http, Response} from '@angular/http';
 import 'rxjs/Rx';
 import {Book} from './book.model';
 import {Observable} from "rxjs/Observable";
 import {SERVER_API_URL} from "../app.constants";
-import {Subject} from "rxjs/Subject";
 
 @Injectable()
 export class BookService {
-  public booksPage = new Subject<any>();
+  public booksPage = new EventEmitter<any>();
 
   constructor(private http: Http) {
   }
@@ -24,12 +23,13 @@ export class BookService {
   }
 
   addBook(book: Book): Observable<any> {
-    console.log("add book");
     const observable = this.http.post(`${SERVER_API_URL}/api/v1/books`, book)
       .map((response: Response) => response.json())
+      .catch(err => Observable.throw(err.json()))
       .share();
 
-    observable.subscribe(() => this.getAllBooks());
+    observable.subscribe(() => this.getAllBooks(), () => {
+    });
 
     return observable;
   }
@@ -37,9 +37,11 @@ export class BookService {
   editBook(book: Book) {
     const observable = this.http.put(`${SERVER_API_URL}/api/v1/books/${book.id}`, book)
       .map((response: Response) => response.json())
+      .catch(err => Observable.throw(err.json()))
       .share();
 
-    observable.subscribe(() => this.getAllBooks());
+    observable.subscribe(() => this.getAllBooks(), () => {
+    });
 
     return observable;
   }

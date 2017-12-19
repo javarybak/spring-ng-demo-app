@@ -1,6 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit} from '@angular/core';
 import {BookService} from '../book.service';
-import {Observable} from "rxjs/Observable";
 
 @Component({
   selector: 'app-books',
@@ -8,7 +7,7 @@ import {Observable} from "rxjs/Observable";
   styleUrls: ['./books.component.css']
 })
 export class BooksComponent implements OnInit {
-  public booksPage: Observable<any>;
+  public booksPage: EventEmitter<any>;
 
   constructor(private bookService: BookService) {
     this.booksPage = bookService.booksPage;
@@ -17,7 +16,5 @@ export class BooksComponent implements OnInit {
   ngOnInit() {
     this.bookService.getAllBooks();
   }
-
-
 }
 

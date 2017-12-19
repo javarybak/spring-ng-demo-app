@@ -1,9 +1,14 @@
 package com.example.springngdemoapp.domain;
 
-import javax.persistence.*;
-import java.time.LocalDate;
+import org.hibernate.validator.constraints.Length;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
-import java.time.Year;
 
 @Entity
 @Table(name = "book")
@@ -13,6 +18,7 @@ public class Book {
     private Long id;
 
     @Column(name = "name")
+    @Length(min = 5, max = 100)
     private String name;
 
     @Column(name = "year_published")

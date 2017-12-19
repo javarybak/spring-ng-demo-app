@@ -4,8 +4,9 @@
   </div>
 </div>
 
-<div *ngFor="let book of (booksPage | async)?.content " class="row mt-1">
+<div *ngFor="let book of (booksPage | async)?.content" class="row mt-1">
   <div class="col-sm-12">
     <app-book-item [book]="book"></app-book-item>
   </div>
 </div>
+

@@ -24,9 +24,9 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book addBook(Book book) {
+    public void addBook(Book book) {
         book.setDateTimeAdded(LocalDateTime.now());
-        return bookRepository.save(book);
+        bookRepository.save(book);
     }
 
     @Override
