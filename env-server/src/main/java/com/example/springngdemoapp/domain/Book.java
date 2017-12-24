@@ -1,5 +1,6 @@
 package com.example.springngdemoapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Column;
@@ -9,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
+
+import static com.example.springngdemoapp.constants.Formats.ISO;
 
 @Entity
 @Table(name = "book")
@@ -25,6 +28,7 @@ public class Book {
     private Integer yearPublished;
 
     @Column(name = "datetime_added", columnDefinition = "DATETIME")
+    @JsonFormat(pattern = ISO, timezone = "UTC")
     private LocalDateTime dateTimeAdded;
 
     public Long getId() {
