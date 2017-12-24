@@ -4,16 +4,18 @@ import 'rxjs/Rx';
 import {Book} from './book.model';
 import {Observable} from "rxjs/Observable";
 import {SERVER_API_URL} from "../app.constants";
+import {BooksPage} from "./books-page.model";
 
 @Injectable()
 export class BookService {
-  public booksPage = new EventEmitter<any>();
+  public booksPage = new EventEmitter<BooksPage>();
+  public pageNumber:number;
 
   constructor(private http: Http) {
   }
 
   getAllBooks(): Observable<any> {
-    const observable = this.http.get(`${SERVER_API_URL}/api/v1/books`)
+    const observable = this.http.get(`${SERVER_API_URL}/api/v1/books?page=${this.pageNumber}`)
       .map((response: Response) => response.json())
       .share();
 

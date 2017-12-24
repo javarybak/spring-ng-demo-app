@@ -4,9 +4,15 @@
   </div>
 </div>
 
-<div *ngFor="let book of (booksPage | async)?.content" class="row mt-1">
+<div *ngFor="let book of (booksPage | async)?.content" class="row mt-2">
   <div class="col-sm-12">
     <app-book-item [book]="book"></app-book-item>
   </div>
 </div>
 
+<div class="col-sm-12 m-1">
+  <div class="mx-auto w-25">
+    <ngb-pagination [collectionSize]="(booksPage | async)?.totalElements" [pageSize]="(booksPage | async)?.size" [maxSize]="5" [rotate]="true"
+                    (pageChange)="changePage($event)" aria-label="Default pagination" [boundaryLinks]="true"></ngb-pagination>
+  </div>
+</div>

@@ -5,7 +5,8 @@ import com.example.springngdemoapp.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.SortDefault;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,19 +31,20 @@ public class BookController {
     }
 
     @GetMapping
-    public Page<Book> getAllBooks(@SortDefault(sort = "dateTimeAdded") Pageable pageable) {
+    public Page<Book> getAllBooks(@PageableDefault(size = 5, sort = "dateTimeAdded", direction = Sort.Direction.DESC)
+                                              Pageable pageable) {
         return bookService.getAllBooks(pageable);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void addBook(@RequestBody @Valid  Book book) {
+    public void addBook(@RequestBody @Valid Book book) {
         bookService.addBook(book);
     }
 
     @PutMapping("/{bookId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void editBook(@PathVariable long bookId, @RequestBody @Valid  Book book) {
+    public void editBook(@PathVariable long bookId, @RequestBody @Valid Book book) {
         book.setId(bookId);
         bookService.editBook(book);
     }
